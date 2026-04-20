@@ -21,8 +21,9 @@
       --blue-lt: oklch(60% 0.09  150);
       --gold:    oklch(72% 0.11  80);
       --coral:   oklch(64% 0.12  40);
-      --gray:    oklch(58% 0.015 160);
-      --card-r:  5px;
+      --gray:      oklch(58% 0.015 160);
+      --vallenato: oklch(58% 0.16 320);
+      --card-r:    5px;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
@@ -76,6 +77,7 @@
     .tipo-descanso    { --accent-color: var(--gray); }
     .tipo-alojamiento { --accent-color: var(--navy); }
     .tipo-transporte  { --accent-color: var(--coral); }
+    .tipo-evento      { --accent-color: var(--vallenato); }
 
     /* ── MODAL ── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); animation: fadeOverlay .2s ease; }
@@ -132,7 +134,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "cardStyle": "normal"
 }/*EDITMODE-END*/;
 
-const TIPO_LABELS = { atraccion:"Atracción", comida:"Comida", descanso:"Descanso", alojamiento:"Alojamiento", transporte:"Transporte" };
+const TIPO_LABELS = { atraccion:"Atracción", comida:"Comida", descanso:"Descanso", alojamiento:"Alojamiento", transporte:"Transporte", evento:"Evento" };
 
 const DAYS = [
   {
@@ -234,6 +236,86 @@ const DAYS = [
         img:"https://images.unsplash.com/photo-1614521084675-f2f5a2780f83?w=800&q=80",
         desc:"El trayecto de ~4 a 5 horas que conecta la metrópoli caribeña con la capital vallenata. La ruta atraviesa paisajes de la costa Caribe colombiana al caer la noche.",
         sugerencias:["Lleva meriendas, agua y un buen playlist para el camino","La ruta pasa por Ciénaga y Fundación — para si necesitas estirar las piernas","Al llegar a Valledupar, directo al hotel — la ciudad merece energía fresca para el día siguiente"] },
+    ]
+  },
+  {
+    id:5, slug:"dia-5",
+    fecha:"Miércoles, 29 Abril", ciudad:"Valledupar",
+    img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80",
+    imgAlt:"Música vallenata — acordeón y cultura del Cesar",
+    eventos:[
+      { id:18, hora:"08:00\n–\n12:00", titulo:"Rest & city orientation", tipo:"descanso",
+        img:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        desc:"Primera mañana en Valledupar. Tiempo para recuperarse del viaje nocturno, conocer el hotel y orientarse en la ciudad antes de los eventos del Festival.",
+        sugerencias:["Sal a caminar el centro de Valledupar — la Plaza Alfonso López es el corazón de la ciudad","Busca dónde comprar algo local para desayunar: empanadas o arepas con queso costeño","Descarga el mapa del Festival para ubicar los escenarios antes de salir"] },
+      { id:19, hora:"14:00\n–\n18:00", titulo:"Concursos de acordeón / Piquerías", tipo:"evento",
+        img:"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80",
+        desc:"El corazón competitivo del Festival de la Leyenda Vallenata. Los concursos de acordeón reúnen a los mejores músicos del país. Las piquerías son duelos improvisados de canto — pura adrenalina vallenata.",
+        sugerencias:["Llega con anticipación para conseguir buen lugar en los escenarios","Los concursos infantiles y aficionados son una joya — no solo los profesionales","Lleva efectivo para comprar artesanías y comida típica en los stands"] },
+    ]
+  },
+  {
+    id:6, slug:"dia-6",
+    fecha:"Jueves, 30 Abril", ciudad:"Valledupar",
+    img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80",
+    imgAlt:"Río Guatapurí — aguas cristalinas del Cesar",
+    eventos:[
+      { id:20, hora:"07:30\n–\n09:30", titulo:"Río Guatapurí", tipo:"atraccion",
+        img:"https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=1200&q=80",
+        desc:"El río que abraza a Valledupar. Sus aguas cristalinas bajando de la Sierra Nevada de Santa Marta son el refugio natural de los vallenatos. Balneario natural a pocos minutos del centro.",
+        sugerencias:["Ir temprano evita el calor y las aglomeraciones del mediodía","El Balneario Hurtado es el punto más popular y accesible","Lleva ropa de baño — el agua es fresca y perfecta para el calor vallenato"] },
+      { id:21, hora:"15:00\n–\n22:00", titulo:"Parrandas y eventos culturales", tipo:"evento",
+        img:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&q=80",
+        desc:"Las parrandas son el alma del Festival. Grupos improvisados de músicos tocan vallenatos en calles, plazas y casas. Un festejo espontáneo y auténtico que no se planifica — se encuentra.",
+        sugerencias:["Sigue el sonido del acordeón — las mejores parrandas son las espontáneas","La Plaza Alfonso López es el epicentro nocturno del Festival","Interactúa con los locales — la hospitalidad vallenata es legendaria"] },
+    ]
+  },
+  {
+    id:7, slug:"dia-7",
+    fecha:"Viernes, 1 Mayo", ciudad:"Valledupar",
+    img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&q=80",
+    imgAlt:"Concierto y festival de música en vivo",
+    eventos:[
+      { id:22, hora:"08:00\n–\n15:00", titulo:"Free morning & rest", tipo:"descanso",
+        img:"https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80",
+        desc:"Mañana libre para recargar energías antes de la noche de cierre. Ideal para explorar el mercado local, comprar artesanías o simplemente descansar.",
+        sugerencias:["Visita el Mercado Municipal para probar dulces típicos: caballito, cocadas, alegrías","El Museo del Acordeón es pequeño pero muy bien curado — vale la visita matutina","Prepara el outfit para la noche — el Festival Vallenato tiene mucho ambiente"] },
+      { id:23, hora:"15:00\n–\n23:00", titulo:"Festival closing events", tipo:"evento",
+        img:"https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80",
+        desc:"Los eventos de cierre del Festival reúnen lo mejor de la semana. Escenarios principales con los finalistas de los concursos, artistas invitados y la energía colectiva del público vallenato.",
+        sugerencias:["Los escenarios del Parque de la Leyenda Vallenata son los más grandes","Lleva silla plegable si quieres comodidad en los eventos al aire libre","Hidratación constante — las noches del Festival son largas e intensas"] },
+    ]
+  },
+  {
+    id:8, slug:"dia-8",
+    fecha:"Sábado, 2 Mayo", ciudad:"Valledupar",
+    img:"https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1200&q=80",
+    imgAlt:"Noche de festival y conciertos vallenatos",
+    eventos:[
+      { id:24, hora:"15:00\n–\n22:00", titulo:"Festival closing events", tipo:"evento",
+        img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+        desc:"La recta final del Festival de la Leyenda Vallenata. Premiaciones de los concursos, desfiles y la explosión cultural que cierra una semana de música e identidad costeña.",
+        sugerencias:["Las premiaciones de acordeón son el momento más emocionante — no las pierdas","Aprovecha para comprar artesanías de última hora en los stands del Festival","El ambiente de cierre tiene una energía especial — disfrútalo sin prisa"] },
+      { id:25, hora:"20:00\n–\n23:00", titulo:"Conciertos Festival Vallenato", tipo:"evento",
+        img:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&q=80",
+        desc:"La gran noche de conciertos cierra el festival con artistas consagrados del vallenato y la música colombiana. La Plaza Alfonso López vibra como pocas veces en el año.",
+        sugerencias:["Llega temprano para ubicarte cerca del escenario principal","La acústica al aire libre en la plaza es excepcional — disfruta el sonido","Es la última noche en Valledupar — vívela al máximo"] },
+    ]
+  },
+  {
+    id:9, slug:"dia-9",
+    fecha:"Domingo, 3 Mayo", ciudad:"Valledupar → Bogotá",
+    img:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80",
+    imgAlt:"Aeropuerto y vuelo de regreso a Bogotá",
+    eventos:[
+      { id:26, hora:"06:00\n–\n12:00", titulo:"Travel Valledupar → Barranquilla", tipo:"transporte",
+        img:"https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+        desc:"El trayecto de regreso por la costa Caribe. La ruta de Valledupar a Barranquilla recorre paisajes del Cesar y del Atlántico al amanecer.",
+        sugerencias:["Sal con tiempo — la carretera puede tener tráfico los domingos festivos","Ten el itinerario del vuelo a mano para llegar holgado al aeropuerto","El desayuno en ruta puede ser en algún municipio — pregunta por opciones locales"] },
+      { id:27, hora:"14:00\n–\n18:00", titulo:"Flight Barranquilla → Bogotá", tipo:"transporte",
+        img:"https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&q=80",
+        desc:"El vuelo de cierre lleva de regreso al interior del país después de una semana intensa entre el Caribe y los Andes. Tiempo de procesar todo lo vivido desde las alturas.",
+        sugerencias:["Llega al aeropuerto Ernesto Cortissoz con al menos 2 horas de anticipación","Revisa el peso del equipaje — las compras del festival pueden pesarte","El viaje desde las alturas del avión ofrece vistas únicas de la costa Caribe"] },
     ]
   }
 ];
@@ -369,9 +451,9 @@ function TweaksPanel({ tweaks, setTweaks, visible }) {
 function applyTheme(theme) {
   const root = document.documentElement;
   const themes = {
-    arena: { '--cream':'oklch(95.5% 0.014 82)', '--cream2':'oklch(92% 0.018 80)', '--navy':'oklch(18% 0.04 245)', '--blue':'oklch(46% 0.09 235)', '--blue-lt':'oklch(56% 0.08 230)', '--gold':'oklch(70% 0.10 75)', '--coral':'oklch(62% 0.11 40)', '--gray':'oklch(60% 0.01 240)' },
-    noche: { '--cream':'oklch(13% 0.02 240)', '--cream2':'oklch(20% 0.025 240)', '--navy':'oklch(92% 0.01 80)', '--blue':'oklch(65% 0.10 210)', '--blue-lt':'oklch(72% 0.09 210)', '--gold':'oklch(72% 0.12 65)', '--coral':'oklch(68% 0.12 35)', '--gray':'oklch(60% 0.02 210)' },
-    selva: { '--cream':'oklch(96% 0.014 130)', '--cream2':'oklch(91% 0.02 130)', '--navy':'oklch(20% 0.05 145)', '--blue':'oklch(50% 0.10 150)', '--blue-lt':'oklch(60% 0.09 150)', '--gold':'oklch(72% 0.11 80)', '--coral':'oklch(64% 0.12 40)', '--gray':'oklch(58% 0.015 160)' },
+    arena: { '--cream':'oklch(95.5% 0.014 82)', '--cream2':'oklch(92% 0.018 80)', '--navy':'oklch(18% 0.04 245)', '--blue':'oklch(46% 0.09 235)', '--blue-lt':'oklch(56% 0.08 230)', '--gold':'oklch(70% 0.10 75)', '--coral':'oklch(62% 0.11 40)', '--gray':'oklch(60% 0.01 240)', '--vallenato':'oklch(58% 0.16 320)' },
+    noche: { '--cream':'oklch(13% 0.02 240)', '--cream2':'oklch(20% 0.025 240)', '--navy':'oklch(92% 0.01 80)', '--blue':'oklch(65% 0.10 210)', '--blue-lt':'oklch(72% 0.09 210)', '--gold':'oklch(72% 0.12 65)', '--coral':'oklch(68% 0.12 35)', '--gray':'oklch(60% 0.02 210)', '--vallenato':'oklch(70% 0.16 320)' },
+    selva: { '--cream':'oklch(96% 0.014 130)', '--cream2':'oklch(91% 0.02 130)', '--navy':'oklch(20% 0.05 145)', '--blue':'oklch(50% 0.10 150)', '--blue-lt':'oklch(60% 0.09 150)', '--gold':'oklch(72% 0.11 80)', '--coral':'oklch(64% 0.12 40)', '--gray':'oklch(58% 0.015 160)', '--vallenato':'oklch(58% 0.16 320)' },
   };
   Object.entries(themes[theme] || themes.selva).forEach(([k, v]) => root.style.setProperty(k, v));
   // For noche: white cards need dark bg
@@ -422,8 +504,8 @@ function App() {
           <p className="hero-eyebrow fade-up">Itinerario personal · Abril 2026</p>
           <h1 className="hero-title fade-up-2">Viaje<span>Quilla</span></h1>
           <div className="hero-meta fade-up-3">
-            <span className="hero-dates">25 — 28 Abril · 4 Días</span>
-            <span className="hero-badge">Barranquilla</span>
+            <span className="hero-dates">25 Abril — 3 Mayo · 9 Días</span>
+            <span className="hero-badge">Barranquilla · Valledupar</span>
           </div>
         </div>
       </header>
